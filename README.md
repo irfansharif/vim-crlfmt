@@ -2,7 +2,9 @@
 
 Vim plugin for `crlfmt`, a `gofmt`-style linter for Go code that enforces the
 CockroachDB Style Guide found
-[here](https://github.com/cockroachdb/cockroach/blob/master/STYLE.md).
+[here](https://github.com/cockroachdb/cockroach/blob/master/STYLE.md). Heavily
+borrowed implementation from [fatih/vim-go](https://github.com/fatih/vim-go)
+and [fatih/vim-hclfmt](https://github.com/fatih/vim-hclfmt).
 
 The plugin by default will format `*.go` files on save, ignoring `*.pb.go` and
 `*.pb.gw.go`. Under the hood it uses

@@ -10,6 +10,10 @@ endif
 
 " Below function is copied from vim-go's fmt.vim file.
 function! fmt#Format()
+    if !(expand('%:p:h')=~#"cockroachdb")
+        return
+    endif
+
     if !executable("crlfmt")
         echo "crlfmt: could not find crlfmt. Please install it from github.com/cockroachdb/crlfmt"
         return ""
