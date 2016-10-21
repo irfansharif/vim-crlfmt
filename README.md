@@ -22,7 +22,7 @@ g:crlfmt_autosave = 0 [default = 1]
 " Options to pass to crlfmt
 g:crlfmt_options = '' [default = '-ignore ".*.pb(.gw)?.go -tab 2"']
 
-" Display error message if crlfmt fails
+" Don't display error message if crlfmt fails
 g:crlfmt_fail_silently = 1 [default = 0]
 ```
 
