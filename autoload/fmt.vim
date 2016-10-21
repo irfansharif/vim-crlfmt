@@ -1,11 +1,11 @@
 " fmt.vim: Vim command to format .go files with crlfmt.
 
-if !exists('g:crl_fmt_fail_silently')
-    let g:crl_fmt_fail_silently = 0
+if !exists('g:crlfmt_fail_silently')
+    let g:crlfmt_fail_silently = 0
 endif
 
-if !exists('g:crl_fmt_options')
-    let g:crl_fmt_options = ''
+if !exists('g:crlfmt_options')
+    let g:crlfmt_options = ' -ignore ".*.pb(.gw)?.go -tab 2"'
 endif
 
 " Below function is copied from vim-go's fmt.vim file.
@@ -19,20 +19,19 @@ function! fmt#Format()
     let l:curw=winsaveview()
 
     " Write current unsaved buffer to a temp file
-    let l:tmpname = tempname()
+    let l:tmpname = tempname() . ".go"
     call writefile(getline(1, '$'), l:tmpname)
 
     let fmt_command = "crlfmt"
 
     " populate the final command with user based fmt options
-    let command = fmt_command . ' -w ' . g:crl_fmt_options
+    let command = fmt_command . ' -w ' . g:crlfmt_options
 
     " execute our command...
     let out = system(command . " " . l:tmpname)
 
-    "if there is no error on the temp file replace the output with the current
-    "file (if this fails, we can always check the outputs first line with:
-    "splitted =~ 'package \w\+')
+    " if there is no error on the temp file replace the output with the
+    " current file.
     if v:shell_error == 0
         " remove undo point caused via BufWritePre
         try | silent undojoin | catch | endtry
@@ -41,7 +40,7 @@ function! fmt#Format()
         call rename(l:tmpname, expand('%'))
         silent edit!
         let &syntax = &syntax
-    elseif g:crl_fmt_fail_silently == 0
+    elseif g:crlfmt_fail_silently == 0
         echo out
         " We didn't use the temp file, so clean up
         call delete(l:tmpname)

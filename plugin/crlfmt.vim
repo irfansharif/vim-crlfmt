@@ -1,4 +1,4 @@
-if get(g:, "crl_fmt_autosave", 1)
+if get(g:, "crlfmt_autosave", 1)
     autocmd BufWritePre *.go call fmt#Format()
 endif
 
