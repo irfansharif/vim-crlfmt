@@ -5,7 +5,7 @@ if !exists('g:crlfmt_fail_silently')
 endif
 
 if !exists('g:crlfmt_options')
-    let g:crlfmt_options = ' -ignore ".*.pb(.gw)?.go" -tab 2'
+    let g:crlfmt_options = ' -ignore ".*.pb(.gw)?.go" -tab 2 -fast'
 endif
 
 " Below function is copied from vim-go's fmt.vim file.
