@@ -23,7 +23,7 @@ function! fmt#Format()
     let l:curw=winsaveview()
 
     " Write current unsaved buffer to a temp file
-    let l:tmpname = tempname() . ".go"
+    let l:tmpname = expand('%') . ".tmp.go"
     call writefile(getline(1, '$'), l:tmpname)
 
     let fmt_command = "crlfmt"
