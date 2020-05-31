@@ -32,7 +32,8 @@ function! fmt#Format()
     let command = fmt_command . ' -w ' . g:crlfmt_options
 
     " execute our command...
-    let out = system(command . " " . l:tmpname)
+    silent let out = system(command . " " . l:tmpname)
+    redraw!
 
     " if there is no error on the temp file replace the output with the
     " current file.
