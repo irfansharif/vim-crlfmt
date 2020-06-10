@@ -12,7 +12,7 @@ The plugin by default will format `*.go` files on save, ignoring `*.pb.go` and
 
 ## Usage
 
-Save the file or call `:Crlfmt`. 
+Save the file or call `:CrlFmt`. 
 
 By default vim-crlfmt automatically formats _*.go_ files, ignoring _*.pb.go_ and
 _*.pb.gw.go_ files, tab width for column calculations used is 2.
